@@ -24,15 +24,16 @@ int main()
 	int arr1[] = { 1, 21, 3, 4, 35, 6, 9 };
 	int arr2[] = { 4, 5, 46, 7, 28, 9, 7 };
 	int len = sizeof(arr1) / sizeof(arr1[0]);
-	printf("����ǰarr1:");
+	printf("˝ťťťÇ°arr1:");
 	Print(arr1, len);
-	printf("����ǰarr2:");
+	printf("˝ťťťÇ°arr2:");
 	Print(arr2, len);
 	SWAP(arr1, arr2, len);
-	printf("������arr1:");
+	printf("˝ťťťşóarr1:");
 	Print(arr1, len);
-	printf("������arr2:");
+	printf("˝ťťťşóarr2:");
 	Print(arr2, len);
 	system("pause");
 	return 0;
 }
+
