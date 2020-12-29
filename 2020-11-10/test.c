@@ -2,10 +2,9 @@
 #include<Windows.h>
 #include<math.h>
 #include<string.h>
-////´òÓ¡Ë®ÏÉ»¨Êı
-//void Flower(int n)
+//void Flower(int n)   
 //{
-//	//ÇónÊÇÒ»¸ö¼¸Î»Êı
+//	//æ±‚næ˜¯ä¸€ä¸ªå‡ ä½æ•°
 //	int count = 0;
 //	int x = n;
 //	int sum = 0;
@@ -14,14 +13,14 @@
 //		count++;
 //		x = x / 10;
 //	}
-//	//Çó¸÷Î»´Î·½Ö®ºÍ
+//	//æ±‚å„ä½æ¬¡æ–¹ä¹‹å’Œ
 //	x = n;
 //	while (x)
 //	{
 //		sum += pow(x% 10, count);
 //		x = x / 10;
 //	}
-//	//ÅĞ¶ÏºÍÊÇ·ñÓë¸ÃÊıÏàµÈ
+//	//åˆ¤æ–­å’Œæ˜¯å¦ä¸è¯¥æ•°ç›¸ç­‰
 //	if (sum == n)
 //	{
 //		printf("%d\n", n);
@@ -37,7 +36,7 @@
 //	system("pause");
 //	return 0;
 //}
-//ÔÚÒ»¸öÕûĞÎÓĞĞòÊı×éÖĞ²éÕÒ¾ßÌåµÄÄ³¸öÊıÕÒµ½ÁË¾Í´òÓ¡Êı×ÖËùÔÚµÄÏÂ±ê£¬ÕÒ²»µ½ÔòÊä³ö£ºÕÒ²»µ½¡£
+//åœ¨ä¸€ä¸ªæ•´å½¢æœ‰åºæ•°ç»„ä¸­æŸ¥æ‰¾å…·ä½“çš„æŸä¸ªæ•°æ‰¾åˆ°äº†å°±æ‰“å°æ•°å­—æ‰€åœ¨çš„ä¸‹æ ‡ï¼Œæ‰¾ä¸åˆ°åˆ™è¾“å‡ºï¼šæ‰¾ä¸åˆ°ã€‚
 //int Found(int arr[], int num,int target)
 //{
 //	int start = 0;
@@ -69,7 +68,7 @@
 //	int ret = Found(arr, num,target);
 //	if (ret == -1)
 //	{
-//		printf("ÕÒ²»µ½\n");
+//		printf("æ‰¾ä¸åˆ°\n");
 //	}
 //	else
 //	{
@@ -78,7 +77,7 @@
 //	system("pause");
 //	return 0;
 //}
-////·Çµİ¹éÊµÏÖstrlen
+////éé€’å½’å®ç°strlen
 //int Strlen(char *str)
 //{
 //	int count = 0;
@@ -97,7 +96,7 @@
 //	system("pause");
 //	return 0;
 //}
-//µİ¹éÊµÏÖstrlen
+//é€’å½’å®ç°strlen
 //int Strlen(char *str)
 //{
 //	if (*str == '\0')
@@ -117,8 +116,8 @@
 //	system("pause");
 //	return 0;
 //}
-//±àĞ´Ò»¸öº¯Êı reverse_string(char * string)£¨µİ¹éÊµÏÖ£©
-//ÊµÏÖ£º½«²ÎÊı×Ö·û´®ÖĞµÄ×Ö·û·´ÏòÅÅÁĞ¡£
+//ç¼–å†™ä¸€ä¸ªå‡½æ•° reverse_string(char * string)ï¼ˆé€’å½’å®ç°ï¼‰
+//å®ç°ï¼šå°†å‚æ•°å­—ç¬¦ä¸²ä¸­çš„å­—ç¬¦åå‘æ’åˆ—ã€‚
 //void reverse_string(char* arr)
 //{
 //	int len = strlen(arr);
@@ -140,7 +139,7 @@
 //	system("pause");
 //	return 0;
 //}
-//½»»»Á½¸öÊı×éµÄÄÚÈİ
+//äº¤æ¢ä¸¤ä¸ªæ•°ç»„çš„å†…å®¹
 void Print(int arr[], int len)
 {
 	for (int i = 0; i < len; i++)
@@ -164,14 +163,14 @@ int main()
 	int arr1[] = { 1, 21, 3, 4, 35, 6, 9 };
 	int arr2[] = { 4, 5, 46, 7, 28, 9, 7 };
 	int len = sizeof(arr1) / sizeof(arr1[0]);
-	printf("½»»»Ç°arr1:");
+	printf("äº¤æ¢å‰arr1:");
 	Print(arr1, len);
-	printf("½»»»Ç°arr2:");
+	printf("äº¤æ¢å‰arr2:");
 	Print(arr2, len);
 	SWAP(arr1, arr2, len);
-	printf("½»»»ºóarr1:");
+	printf("äº¤æ¢åarr1:");
 	Print(arr1, len);
-	printf("½»»»ºóarr2:");
+	printf("äº¤æ¢åarr2:");
 	Print(arr2, len);
 	system("pause");
 	return 0;

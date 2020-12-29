@@ -15,14 +15,14 @@ void reverse_str(char* begin, char* end)
 }
 int main()
 {
-	//×Ö·û´®½ÓÊÕ
+	//å­—ç¬¦ä¸²æ¥æ”¶
 	char str[100] = { 0 };
-	//Ò»¶¨ÒªÔ¤Áô\0µÄÎ»ÖÃ
+	//ä¸€å®šè¦é¢„ç•™\0çš„ä½ç½®
 	fgets(str, sizeof(str)-1, stdin);
-	str[strlen(str)-1] = '\0';//ÊäÈëi like beijing.\n
+	str[strlen(str)-1] = '\0';//è¾“å…¥i like beijing.\n
 	char *begin = str;
 	char *end = str;
-	//Ã¿¸öµ¥´ÊÄæÖÃ
+	//æ¯ä¸ªå•è¯é€†ç½®
 	while (*end != '\0')
 	{
 		while (*end != '\0' && *end != ' ')
@@ -36,9 +36,10 @@ int main()
 		}
 		begin = end;
 	}
-	//Õû¸ö×Ö·û´®ÄæÖÃ
+	//æ•´ä¸ªå­—ç¬¦ä¸²é€†ç½®
 	reverse_str(str, str + strlen(str)-1);
 	printf("%s\n", str);
 	system("pause");
 	return 0;
 }
+

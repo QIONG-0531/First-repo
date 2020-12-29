@@ -9,9 +9,9 @@ int Login(int times)
 	char name[64];
 	char passwd[64];
 	do{
-		printf("ÇëÊäÈëÄãµÄÕËºÅ# ");
+		printf("è¯·è¾“å…¥ä½ çš„è´¦å·# ");
 		scanf("%s", name);
-		printf("ÇëÊäÈëÄãµÄÃÜÂë# ");
+		printf("è¯·è¾“å…¥ä½ çš„å¯†ç # ");
 		scanf("%s", passwd);
 		if (strcmp(name, NAME) == 0 && strcmp(passwd, PASSWD) == 0)
 		{
@@ -20,9 +20,9 @@ int Login(int times)
 		}
 		else{
 			times--;
-			printf("Äã»¹ÓĞ%d´Î»ú»á£¡\n", times);
+			printf("ä½ è¿˜æœ‰%dæ¬¡æœºä¼šï¼\n", times);
 			if (times == 0){
-				printf("²»ºÃÒâË¼£¬ĞèÒªµÈ3S²ÅÄÜÔÙ´Î³¢ÊÔ\n");
+				printf("ä¸å¥½æ„æ€ï¼Œéœ€è¦ç­‰3Sæ‰èƒ½å†æ¬¡å°è¯•\n");
 				Sleep(3000);
 				times = 3;
 			}
@@ -35,10 +35,10 @@ int main()
 	int times = 3;
 	int result = Login(times); //success:1, failed: -1;
 	if (1 == result){
-		printf("¹§Ï²£¬µÇÂ¼³É¹¦£¡\n");
+		printf("æ­å–œï¼Œç™»å½•æˆåŠŸï¼\n");
 	}
 	else{
-		printf("²»ºÃÒâË¼£¬µÇÂ¼Ê§°Ü£¡\n");
+		printf("ä¸å¥½æ„æ€ï¼Œç™»å½•å¤±è´¥ï¼\n");
 	}
 	system("pause");
 	return 0;

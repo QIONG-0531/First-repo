@@ -23,4 +23,4 @@ int main()
 	show(arr);
 	system("pause");
 	return 0;
-}               
+}     

@@ -7,7 +7,7 @@ int Find(const char*str1, char *str2)
 	char temp[1024] = { 0 };
 	strcpy(temp, str1);
 	strcat(temp, str1);
-	char *arr=strstr(temp, str2);//Ğı×ªºóµÄ×Ö·û´®Ò»¶¨ÊÇaabcdaabcdµÄ×Ó¼¯
+	char *arr=strstr(temp, str2);//æ—‹è½¬åçš„å­—ç¬¦ä¸²ä¸€å®šæ˜¯aabcdaabcdçš„å­é›†
 	if (arr != NULL)
 	{
 		return 1;
@@ -25,3 +25,4 @@ int main()
 	system("pause");
 	return 0;
 }
+
