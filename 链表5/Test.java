@@ -9,7 +9,6 @@ public class Test {
         }
         int lenA=0;
         int lenB=0;
-        int len=lenA-lenB;
         Node pl=headA;
         Node ps=headB;
         while (pl!=null){
@@ -20,6 +19,7 @@ public class Test {
            ps=ps.next;
             lenB++;
         }
+        int len=lenA-lenB;
         pl=headA;
         ps=headB;
         if(len<0){
