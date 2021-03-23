@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>页面</title>
+    <script>
+        function myck(type) {
+             if(type==1){
+                 var username=document.getElementById("username").value;
+                 if(username==""){
+                     alert("请输入用户名");
+                     return false;
+                 }else{
+                     alert("提交成功");
+                 }
+             }else if(type==2){
+                 alert("清空成功");
+             }else if(type==3){
+                 document.getElementById("div1").innerHTML="<strong>新</strong>用户注册"
+             }else if(type==4){
+                 document.getElementById("username").value="hahaha";
+             }
+        }
+    </script>
+</head>
+<body>
+    用户名：<input id="username"  type="text"  >
+    <p></p>
+  <input type="button" onclick="myck(1)" value="提交">
+  <input type="button" onclick="myck(2)" value="清空">
+  <input type="button" onclick="myck(3)" value="改变内容">
+    <input type="button" onclick="myck(4)" value="设置文本框内容">
+<div  id="div1">
+
+</div>
+</body>
+</html>
