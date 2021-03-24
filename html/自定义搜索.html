@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>自定义搜索</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        function myck(type) {
+            var baidu_url="https://www.baidu.com";
+            var sogou_url="https://www.sogou.com";
+            var san_url="https://www.so.com";
+            var ifm= jQuery("#ifm");
+            if(type==1){
+                ifm.attr("src",baidu_url);
+            }else if(type==2){
+                ifm.attr("src",sogou_url);
+            }else{
+                ifm.attr("src",san_url);
+            }
+        }
+    </script>
+</head>
+<body>
+<input  type="button"  onclick="myck(1)"  value="百度">&nbsp;&nbsp;&nbsp;
+<input  type="button"  onclick="myck(2)"  value="搜狗">&nbsp;&nbsp;&nbsp;
+<input  type="button"  onclick="myck(3)"  value="360搜索"><p></p>
+<iframe id="ifm" style="width: 100%;height: 500px;" src="https://www.baidu.com"></iframe>
+</body>
+</html>
