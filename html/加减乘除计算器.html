@@ -1,0 +1,49 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>计算器</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        function myck(type) {
+            var num1=jQuery("#num1");
+            var num2=jQuery("#num2");
+            var retsult=0;
+            if(type==5){
+                if(confirm("确定要清空吗")){
+                    num1.val("");
+                    num2.val("");
+                    jQuery("ret").html("");
+                }
+            }
+            if(type==1){
+                retsult=parseInt(num1.val())+parseInt(num2.val());
+            }else if(type==2){
+                retsult=parseInt(num1.val())-parseInt(num2.val());
+            }else if(type==3){
+                retsult=parseInt(num1.val())*parseInt(num2.val());
+            }else if(type==4){
+                retsult=parseInt(num1.val())/parseInt(num2.val());
+            }
+            jQuery("#ret").html("最终结果："+retsult);
+        }
+    </script>
+</head>
+<div style="text-align: center;margin-top: 100px">
+<div>
+    <h1>计算器</h1>
+</div>
+<div>
+    数字1:<input type="number" id="num1" placeholder="请输入数字1"><p></p>
+    数字2:<input type="number" id="num2" placeholder="请输入数字2">
+</div><p></p>
+<div>
+    <input type="button" value="相加" onclick="myck(1)">
+    <input type="button" value="相减" onclick="myck(2)">
+    <input type="button" value="相乘" onclick="myck(3)">
+    <input type="button" value="相除" onclick="myck(4)">
+    <input type="button" value="清空" onclick="myck(5)">
+</div>
+<div id="ret">
+</div>
+</div>
+</html>
