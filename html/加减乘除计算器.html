@@ -2,48 +2,75 @@
 <head>
     <meta charset="utf-8">
     <title>计算器</title>
+    <!--<script>
+        function myck(type) {
+           var num1=document.getElementById("num1");
+           var num2=document.getElementById("num2");
+           var result=0;
+           if(type==5){
+               if(confirm("确定要清空吗")){
+                   num1.value="";
+                   num2.value="";
+                   document.getElementById("ret").innerHTML="";
+               }
+           }
+           if(type==1){
+               result=parseInt(num1.value)+parseInt(num2.value);
+           }else if(type==2){
+               result=parseInt(num1.value)-parseInt(num2.value);
+           }else if(type==3){
+               result=parseInt(num1.value)*parseInt(num2.value);
+           }else{
+               result=parseInt(num1.value)/parseInt(num2.value);
+           }
+           document.getElementById("ret").innerHTML="最终结果："+result;
+        }
+    </script>-->
     <script src="jquery-1.9.1.min.js"></script>
     <script>
         function myck(type) {
             var num1=jQuery("#num1");
             var num2=jQuery("#num2");
-            var retsult=0;
+            var result=0;
             if(type==5){
                 if(confirm("确定要清空吗")){
                     num1.val("");
                     num2.val("");
-                    jQuery("ret").html("");
+                    jQuery("#ret").html("");
                 }
             }
             if(type==1){
-                retsult=parseInt(num1.val())+parseInt(num2.val());
+                result=parseInt(num1.val())+parseInt(num2.val());
             }else if(type==2){
-                retsult=parseInt(num1.val())-parseInt(num2.val());
+                result=parseInt(num1.val())-parseInt(num2.val());
             }else if(type==3){
-                retsult=parseInt(num1.val())*parseInt(num2.val());
-            }else if(type==4){
-                retsult=parseInt(num1.val())/parseInt(num2.val());
+                result=parseInt(num1.val())*parseInt(num2.val());
+            }else{
+                result=parseInt(num1.val())/parseInt(num2.val());
             }
-            jQuery("#ret").html("最终结果："+retsult);
+            jQuery("#ret").html("最终结果："+result);
         }
     </script>
 </head>
-<div style="text-align: center;margin-top: 100px">
-<div>
-    <h1>计算器</h1>
+<body>
+<div style="text-align: center;margin-top: 100px;">
+    <div style="font-size: 20px">
+        计算器
+    </div>
+    <div>
+        数字1:<input type="number" id="num1" placeholder="请输入数字1"><p></p>
+        数字2:<input type="number" id="num2" placeholder="请输入数字2">
+    </div><p></p>
+    <div>
+        <input type="button" onclick="myck(1)" value="相加">
+        <input type="button" onclick="myck(2)" value="相减">
+        <input type="button" onclick="myck(3)" value="相乘">
+        <input type="button" onclick="myck(4)" value="相除">
+        <input type="button" onclick="myck(5)" value="清空">
+    </div>
+    <div id="ret">
+
+    </div>
 </div>
-<div>
-    数字1:<input type="number" id="num1" placeholder="请输入数字1"><p></p>
-    数字2:<input type="number" id="num2" placeholder="请输入数字2">
-</div><p></p>
-<div>
-    <input type="button" value="相加" onclick="myck(1)">
-    <input type="button" value="相减" onclick="myck(2)">
-    <input type="button" value="相乘" onclick="myck(3)">
-    <input type="button" value="相除" onclick="myck(4)">
-    <input type="button" value="清空" onclick="myck(5)">
-</div>
-<div id="ret">
-</div>
-</div>
+</body>
 </html>
