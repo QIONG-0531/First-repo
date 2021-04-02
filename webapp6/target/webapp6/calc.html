@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        //局部页面刷新，用的都是JSON里的值
+        function myajax() {
+            jQuery.getJSON("mycalc2",
+                {"num1":jQuery("#number1").val(),
+                            "num2":jQuery("#number2").val()},
+                function(data){
+                //控制台打印对象
+                console.dir(data);
+                alert(data.total);
+            });
+        }
+    </script>
+</head>
+<body>
+<form action="calc" method="post">
+    <div style="text-align: center">
+        <h1>计算器</h1>
+        数字1:<input id="number1" name="number1" type="number"><p></p>
+        数字2:<input id="number2" name="number2" type="number"><p></p>
+        <input type="button" onclick="myajax()" value="提交">
+    </div>
+</form>
+</body>
+</html>
