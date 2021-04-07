@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加文章页面</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        function mysub(type) {
+            var title=jQuery("#title");
+            var content=jQuery("#content");
+            if(type==2){
+                if(confirm("是否确定清空")){
+                    title.val("");
+                    content.val("");
+                }
+                return false;
+            }
+            if(title.val().trim()==""){
+                alert("请先输入标题");
+                title.focus();
+                return  false;
+            }
+            if(content.val().trim()==""){
+                alert("请先输入正文");
+                content.focus();
+                return  false;
+            }
+            // 提交信息给后端
+            jQuery.getJSON("addart",{
+                "title":title.val(),
+                "content":content.val()
+            },function (data) {
+                if(data!=null && data.succ==1){
+                    // 说明请求成功
+                    alert("添加成功");
+                }else{
+                    alert("添加失败"+data.msg);
+                }
+            });
+
+        }
+    </script>
+</head>
+<body>
+<h1>添加文章</h1>
+标题：<input id="title" name="title" type="text"><p></p>
+正文：<textarea id="content" name="content" style="width: 50%;height: 300px;"></textarea><p></p>
+<input type="button" value="提交" onclick="mysub(1)">
+<input type="button" value="清空" onclick="mysub(2)">
+</body>
+</html>
