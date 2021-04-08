@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>所有文章列表</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        var curpage=1;
+        function datefm(timespan){
+            var date=new Date(timespan);
+            var y=date.getFullYear();
+            //月份必须加1
+            var m=date.getMonth()+1;
+            var d=date.getDate();
+            return y+"-"+m+"-"+d;
+        }
+        jQuery(function () {
+            var myparams=location.search;
+            if (myparams != "") {
+                curpage = parseInt(myparams.split("=")[1]);
+            }
+            jQuery.getJSON("list",{"cpage":curpage,"psize":2},
+                function (data) {
+                    if(data!=null && data.succ==1){
+                        var html="";
+                        for(var i=0;i<data.list.length;i++){
+                            var articleinfo=data.list[i];
+                            html+="<tr>\n" +
+                                "            <td>"+articleinfo.id+"</td>\n" +
+                                "            <td><a  href='detail.html?id="+articleinfo.id+"'> "+articleinfo.title+"</a></td>\n" +
+                                "            <td>"+datefm(articleinfo.createtime)+"</td>\n" +
+                                "            <td>"+articleinfo.rcount+"</td>\n" +
+                                "            <td>"+articleinfo.username+"</td>\n" +
+                                "        </tr>";
+                        }
+                        jQuery("#tab").append(html);
+                    }else{
+                        alert("查询失败"+data.msg);
+                    }
+                });
+        })
+
+        function jump(type) {
+            if(type==1){
+                if(curpage>1){
+                    //正常进入上一页
+                    location.href="list.html?c="+(curpage-1);
+                }else{
+                    //已经在首页了
+                    alert("当前已经是首页了");
+                    return false;
+                }
+            }else{
+                location.href="list.html?c="+(curpage+1);
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div style="text-align: center;">
+    <h1>所有文章列表</h1>
+    <table id="tab" style="text-align: center;width: 80%;margin-left: 100px;" border="1">
+        <tr>
+            <td>编号</td>
+            <td>标题</td>
+            <td>创建时间</td>
+            <td>阅读量</td>
+            <td>作者</td>
+        </tr>
+    </table>
+    <hr>
+   <a href="javascript:jump(1)">上一页</a>
+    <a href="javascript:jump(2)">下一页</a>
+</div>
+
+</body>
+</html>

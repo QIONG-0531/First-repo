@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的文章列表页</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        function datefm(timespan){
+            var date=new Date(timespan);
+            var y=date.getFullYear();
+            //月份必须加1
+            var m=date.getMonth()+1;
+            var d=date.getDate();
+            return y+"-"+m+"-"+d;
+        }
+        function mydel(id){
+            if(confirm("确定要删除？")){
+                jQuery.getJSON("mydel",{"id":id},
+                function (data) {
+                  if(data!=null && data.succ==1){
+                      alert("恭喜，操作成功");
+                      //刷新当前页面
+                      location.href=location.href;
+                  }else{
+                      alert("操作失败"+data.msg);
+                  }
+                });
+            }
+        }
+        jQuery(function () {
+            // 等页面加载完成之后再执行
+
+            jQuery.getJSON("artlist", {}, function (data) {
+                if (data != null && data.list != null &&
+                    data.list.length > 0) {
+                    // table 数据初始化
+                    jQuery("#tab").html("<tr>\n" +
+                        "    <td>\n" +
+                        "        编号\n" +
+                        "    </td>\n" +
+                        "    <td>\n" +
+                        "        标题\n" +
+                        "    </td>\n" +
+                        "    <td>\n" +
+                        "        创建时间\n" +
+                        "    </td>\n" +
+                        "    <td>\n" +
+                        "        阅读量\n" +
+                        "    </td>\n" +
+                        "    <td>\n" +
+                        "        操作\n" +
+                        "    </td>\n" +
+                        "</tr>");
+                    // 数据拼接
+                    var html = "";
+                    for (var i = 0; i < data.list.length; i++) {
+                        var articleinfo = data.list[i];
+                        html += "<tr>\n" +
+                            "            <td>\n" +
+                            articleinfo.id + "\n" +
+                            "            </td>\n" +
+                            "            <td>\n" +
+                            articleinfo.title + "\n" +
+                            "            </td>\n" +
+                            "            <td>\n" +
+                            datefm(articleinfo.createtime) + "                \n" +
+                            "            </td>\n" +
+                            "            <td>\n" +
+                            articleinfo.rcount + "                \n" +
+                            "            </td>\n" +
+                            "            <td>\n" +
+                            "                <a href='update.html?id="+articleinfo.id+"'>修改</a>" +
+                            "<a href='javascript:mydel("+articleinfo.id+");'> 删除</a>\n" +
+                            "            </td>\n" +
+                            "        </tr>";
+                    }
+                    jQuery("#tab").append(html);
+                } else {
+                    alert("抱歉：请先登录！");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div style="text-align: center;margin-top: 50px;">
+    <h1>我的文章列表</h1>
+    <h2><a href="add.html">添加文章</a> </h2>
+    <table id="tab" style="width: 80%;margin-left: 100px;" border="1" cellspacing="0">
+        <tr>
+            <td>
+                编号
+            </td>
+            <td>
+                标题
+            </td>
+            <td>
+                创建时间
+            </td>
+            <td>
+                阅读量
+            </td>
+            <td>
+                操作
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+</body>
+</html>

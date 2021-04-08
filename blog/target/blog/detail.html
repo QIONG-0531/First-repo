@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文章详情页</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        function datefm(timestamp){
+            var date=new Date(timestamp);
+            var y=date.getFullYear();
+            var m=date.getMonth()+1;
+            var d=date.getDate();
+            return y+"-"+m+"-"+d;
+        }
+        jQuery(function () {
+            var id=location.search.split("=")[1];
+            jQuery.getJSON("select",{"id":id},
+            function (data) {
+                if(data!=null && data.succ==1){
+                    var art=data.article;
+                    jQuery("#title").html(art.title);
+                    jQuery("#content").html(art.content);
+                    jQuery("#createtime").html(datefm(art.createtime));
+                    jQuery("#rcount").html(art.rcount);
+                    jQuery("#username").html(art.username);
+
+                }else{
+                    alert("查询失败"+data.msg);
+                }
+
+            });
+            //执行访问量加1
+            jQuery.getJSON("upcount",{"id":id},function (data) {
+                  if(data!=null && data.succ==1){
+
+                  }else{
+                      alert(data.msg);
+                  }
+            });
+
+        });
+    </script>
+</head>
+<body>
+<div style="margin-top: 100px;margin-left: 100px;">
+    <h1 id="title">标题</h1>
+    <div> 正文
+    <div id="content">
+
+    </div>
+    </div>
+    <div>
+        <span id="createtime">发布时间</span>&nbsp;&nbsp;
+        <span id="rcount">访问量</span>&nbsp;&nbsp;
+        <span id="username">作者</span>
+    </div>
+</div>
+</body>
+</html>
