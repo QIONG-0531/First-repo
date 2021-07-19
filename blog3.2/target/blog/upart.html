@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的文章修改</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        //获取文章id
+        var id=0;
+        jQuery(function () {
+            //1.获取文章id（从url获取） ？id=xxx
+            var thisParameter=location.search.substring(1);//id=xxx
+            id=thisParameter.split("=")[1];
+            //2.查询数据库信息并展示
+            jQuery.getJSON("showart",{"id":id},
+            function (data) {
+                if(data!=null && data.state==200){
+                    var articleinfo=data.article;
+                    jQuery("#title").val(articleinfo.title);
+                    jQuery("#content").val(articleinfo.content);
+                }else{
+                    alert("查询失败"+data.msg);
+                }
+
+            })
+
+        })
+        function mysub(type) {
+            var title=jQuery("#title");
+            var content=jQuery("#content");
+            if(type==2){
+                if(confirm("确定要清空吗")){
+                    title.val("");
+                    content.val("");
+                }
+                return false;
+            }
+            if(title.val().trim()==""){
+                alert("请先输入标题");
+                title.focus();
+                return false;
+            }
+            if(content.val().trim()==""){
+                alert("请先输入正文");
+                content.focus();
+                return false;
+            }
+            jQuery.getJSON("upart",{"title":title.val(),"content":content.val(),"id":id},
+            function (data) {
+                if(data!=null && data.state==200){
+                    alert("修改成功");
+                }else{
+                    alert("操作失败"+msg);
+                }
+
+            });
+
+        }
+    </script>
+</head>
+<body>
+<div style="margin-left: 50px;margin-top: 50px;">
+    标题：<input id="title" name="title" type="text"><p></p>
+    正文：<textarea id="content" name="content" style="width: 50%;height: 300px;"></textarea>
+    <p></p>
+    <input type="button" value="提交" onclick="mysub(1)">
+    <input type="button" value="清空" onclick="mysub(2)">
+</div>
+</body>
+</html>
